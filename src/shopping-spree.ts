@@ -5,9 +5,11 @@ function calculateRemainingMoney(
 ): number {
   const remainingMoney = totalMoney - cakeCost;
 
-  const donuts = Math.floor(remainingMoney / donutCost);
+  if (remainingMoney < 0) {
+    return remainingMoney;
+  }
 
-  return remainingMoney - donuts * donutCost;
+  return remainingMoney % donutCost;
 }
 
 console.log(calculateRemainingMoney(100, 20, 10));
